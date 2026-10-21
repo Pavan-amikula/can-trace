@@ -4,7 +4,7 @@
 
 **Interpretable CAN intrusion detection. Inspectable tensor networks. Reproducible forensic evidence.**
 
-[Quick start](#run-locally) · [Video demonstration](docs/media/can-trace-demo.mp4) · [Measured results](docs/evaluation.md) · [Research](docs/research.md) · [Recruitment handoff](docs/recruitment-handoff.md)
+[Quick start](#run-locally) · [Video demonstration](https://github.com/user-attachments/assets/6105f152-e52a-4748-a523-4a2aba8bda3e) · [Measured results](docs/evaluation.md) · [Research](docs/research.md) · [Recruitment handoff](docs/recruitment-handoff.md)
 
 Python · NumPy · Matrix Product States · PyTorch · FastAPI · SocketCAN
 
@@ -18,7 +18,9 @@ The implementation uses classical computation throughout. It does not require a 
 
 ## Watch the project work
 
-**[Play the browser demonstration — MP4](docs/media/can-trace-demo.mp4)**
+https://github.com/user-attachments/assets/6105f152-e52a-4748-a523-4a2aba8bda3e
+
+**[Download the browser demonstration — MP4](docs/media/can-trace-demo.mp4)**
 
 ![Actual browser replay preview](docs/media/replay-preview.gif)
 
