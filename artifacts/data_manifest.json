@@ -1,0 +1,21 @@
+{
+  "source": "CAN-MIRGU authors' sample dataset",
+  "commit": "375ad16faeab5f1cbec145e8a963a3619b1a7207",
+  "files": {
+    "benign.log": {
+      "url": "https://raw.githubusercontent.com/sampathrajapaksha/CAN-MIRGU/375ad16faeab5f1cbec145e8a963a3619b1a7207/Sample%20dataset/Benign/Day_1/Benign_day1_file1.log",
+      "bytes": 17158541,
+      "sha256": "7ace6721ddf51768078b07f4070a954a4daacd4766c720d7328600c51ff3148c"
+    },
+    "injection.log": {
+      "url": "https://raw.githubusercontent.com/sampathrajapaksha/CAN-MIRGU/375ad16faeab5f1cbec145e8a963a3619b1a7207/Sample%20dataset/Attack/Real_attacks/Break_and_fog_light_attack.log",
+      "bytes": 23674812,
+      "sha256": "48335c1717b9934673d9dccb56048acbd52e858e9a0bdbf2590276a17cf8bfe0"
+    },
+    "masquerade.log": {
+      "url": "https://raw.githubusercontent.com/sampathrajapaksha/CAN-MIRGU/375ad16faeab5f1cbec145e8a963a3619b1a7207/Sample%20dataset/Attack/Masquerade_attacks/Break_and_fog_light_masquerade_attack.log",
+      "bytes": 23667468,
+      "sha256": "81466dd0751c1590b01c695e474d1cd0a3ddc4d71a8eef4cea51571c0e7040cb"
+    }
+  }
+}

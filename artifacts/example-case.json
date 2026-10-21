@@ -1,0 +1,863 @@
+{
+  "case": {
+    "schema": "can-trace-case/1",
+    "source_sha256": "74a8a097ab8467ba2592d97f2cfb75c165a88eecfc9ed0f0b63e39606e9c81b6",
+    "model_sha256": "a20001257e00a349b93b7dff5907ac40be28ce07a2dff3464fa7e6d5f1387008",
+    "configuration": {
+      "source": "generated synthetic fuzzing fixture; not vehicle benchmark data",
+      "encoder": {
+        "window": 4,
+        "context": "same_id",
+        "gap_scale": [
+          0.001000241647812039,
+          0.003999204596962291
+        ],
+        "seen_ids": [
+          288,
+          304,
+          576,
+          848
+        ],
+        "features": [
+          "id_bit_10",
+          "id_bit_9",
+          "id_bit_8",
+          "id_bit_7",
+          "id_bit_6",
+          "id_bit_5",
+          "id_bit_4",
+          "id_bit_3",
+          "id_bit_2",
+          "id_bit_1",
+          "id_bit_0",
+          "byte_0",
+          "byte_1",
+          "byte_2",
+          "byte_3",
+          "byte_4",
+          "byte_5",
+          "byte_6",
+          "byte_7",
+          "dlc",
+          "bus_gap",
+          "id_gap"
+        ]
+      },
+      "rank": 2,
+      "threshold": 1
+    },
+    "chain": [
+      {
+        "previous_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "event": {
+          "score": 0.28710512553544765,
+          "alert": false,
+          "threshold": 1.0,
+          "frames": [
+            {
+              "timestamp": 0.18803046507754137,
+              "arbitration_id": 288,
+              "data": [
+                161,
+                94,
+                47,
+                46,
+                12,
+                34,
+                56,
+                78
+              ],
+              "label": 0,
+              "line": 189,
+              "channel": "can0",
+              "can_id": "0x120",
+              "payload": "A1 5E 2F 2E 0C 22 38 4E"
+            },
+            {
+              "timestamp": 0.1920209897134599,
+              "arbitration_id": 288,
+              "data": [
+                162,
+                93,
+                48,
+                47,
+                12,
+                34,
+                56,
+                78
+              ],
+              "label": 0,
+              "line": 193,
+              "channel": "can0",
+              "can_id": "0x120",
+              "payload": "A2 5D 30 2F 0C 22 38 4E"
+            },
+            {
+              "timestamp": 0.19601543530372578,
+              "arbitration_id": 288,
+              "data": [
+                162,
+                93,
+                49,
+                48,
+                12,
+                34,
+                56,
+                78
+              ],
+              "label": 0,
+              "line": 197,
+              "channel": "can0",
+              "can_id": "0x120",
+              "payload": "A2 5D 31 30 0C 22 38 4E"
+            },
+            {
+              "timestamp": 0.20001400733594732,
+              "arbitration_id": 288,
+              "data": [
+                44,
+                59,
+                248,
+                46,
+                85,
+                152,
+                91,
+                20
+              ],
+              "label": 1,
+              "line": 201,
+              "channel": "can0",
+              "can_id": "0x120",
+              "payload": "2C 3B F8 2E 55 98 5B 14"
+            }
+          ],
+          "explanation": {
+            "score": 0.28710512553544765,
+            "threshold": 1.0,
+            "conditioning_id": "0x120",
+            "method": "ID held fixed; signed per-ID median-replacement score delta; non-additive and non-causal",
+            "features": [
+              {
+                "offset": 0,
+                "feature": "byte_2",
+                "value": 0.9725490196078431,
+                "reference": 0.28627450980392155,
+                "delta": 0.12036925761598455
+              },
+              {
+                "offset": 0,
+                "feature": "byte_5",
+                "value": 0.596078431372549,
+                "reference": 0.13333333333333333,
+                "delta": 0.052079827754777874
+              },
+              {
+                "offset": 0,
+                "feature": "byte_0",
+                "value": 0.17254901960784313,
+                "reference": 0.5980392156862745,
+                "delta": 0.042609529187564305
+              },
+              {
+                "offset": 0,
+                "feature": "byte_4",
+                "value": 0.3333333333333333,
+                "reference": 0.047058823529411764,
+                "delta": 0.01956336783184731
+              },
+              {
+                "offset": 0,
+                "feature": "byte_7",
+                "value": 0.0784313725490196,
+                "reference": 0.3058823529411765,
+                "delta": 0.01229833253463064
+              },
+              {
+                "offset": -3,
+                "feature": "byte_3",
+                "value": 0.1803921568627451,
+                "reference": 0.34901960784313724,
+                "delta": 0.008375773100359418
+              },
+              {
+                "offset": 0,
+                "feature": "byte_1",
+                "value": 0.23137254901960785,
+                "reference": 0.4019607843137255,
+                "delta": 0.00737813898818962
+              },
+              {
+                "offset": 0,
+                "feature": "byte_6",
+                "value": 0.3568627450980392,
+                "reference": 0.2196078431372549,
+                "delta": 0.0044583818096680106
+              },
+              {
+                "offset": 0,
+                "feature": "byte_3",
+                "value": 0.1803921568627451,
+                "reference": 0.2823529411764706,
+                "delta": 0.0033558346799257843
+              },
+              {
+                "offset": -1,
+                "feature": "byte_2",
+                "value": 0.19215686274509805,
+                "reference": 0.2823529411764706,
+                "delta": 0.002676455522906851
+              },
+              {
+                "offset": -2,
+                "feature": "byte_2",
+                "value": 0.18823529411764706,
+                "reference": 0.2784313725490196,
+                "delta": 0.002672286765385723
+              },
+              {
+                "offset": -1,
+                "feature": "byte_3",
+                "value": 0.18823529411764706,
+                "reference": 0.2784313725490196,
+                "delta": 0.0026688538833784525
+              },
+              {
+                "offset": -2,
+                "feature": "byte_3",
+                "value": 0.1843137254901961,
+                "reference": 0.27450980392156865,
+                "delta": 0.0026647909158799554
+              },
+              {
+                "offset": -3,
+                "feature": "byte_2",
+                "value": 0.1843137254901961,
+                "reference": 0.27450980392156865,
+                "delta": 0.002508457099105854
+              },
+              {
+                "offset": -2,
+                "feature": "byte_1",
+                "value": 0.36470588235294116,
+                "reference": 0.403921568627451,
+                "delta": 0.00045427304576317606
+              },
+              {
+                "offset": -2,
+                "feature": "byte_0",
+                "value": 0.6352941176470588,
+                "reference": 0.596078431372549,
+                "delta": 0.00045357286321251467
+              },
+              {
+                "offset": -1,
+                "feature": "byte_1",
+                "value": 0.36470588235294116,
+                "reference": 0.4019607843137255,
+                "delta": 0.00043409190672233366
+              },
+              {
+                "offset": -1,
+                "feature": "byte_0",
+                "value": 0.6352941176470588,
+                "reference": 0.5980392156862745,
+                "delta": 0.00043270195771932807
+              },
+              {
+                "offset": -3,
+                "feature": "byte_0",
+                "value": 0.6313725490196078,
+                "reference": 0.5980392156862746,
+                "delta": 0.00035347968353294235
+              },
+              {
+                "offset": -3,
+                "feature": "byte_1",
+                "value": 0.3686274509803922,
+                "reference": 0.4019607843137255,
+                "delta": 0.0003534796835328313
+              },
+              {
+                "offset": -3,
+                "feature": "bus_gap",
+                "value": 0.28880886291792496,
+                "reference": 0.28269627110623263,
+                "delta": 7.03950565579814e-05
+              },
+              {
+                "offset": 0,
+                "feature": "bus_gap",
+                "value": 0.27733644292481263,
+                "reference": 0.2860808845321586,
+                "delta": 1.9116769578220172e-05
+              },
+              {
+                "offset": -1,
+                "feature": "bus_gap",
+                "value": 0.27901170041646084,
+                "reference": 0.2840893089481555,
+                "delta": 7.701799147219468e-06
+              },
+              {
+                "offset": -3,
+                "feature": "id_gap",
+                "value": 0.2841798156251698,
+                "reference": 0.2838261725249304,
+                "delta": 3.785341644191309e-06
+              },
+              {
+                "offset": -2,
+                "feature": "bus_gap",
+                "value": 0.2856317273897667,
+                "reference": 0.2821999773432608,
+                "delta": 1.7680592203639378e-06
+              },
+              {
+                "offset": -1,
+                "feature": "id_gap",
+                "value": 0.2831844117557001,
+                "reference": 0.28353369694141206,
+                "delta": 8.366623949207508e-08
+              },
+              {
+                "offset": 0,
+                "feature": "id_gap",
+                "value": 0.283430909881085,
+                "reference": 0.2835049455994614,
+                "delta": 8.293793707370156e-09
+              },
+              {
+                "offset": -2,
+                "feature": "id_gap",
+                "value": 0.2829501101217293,
+                "reference": 0.2832146700151325,
+                "delta": 3.4307112706244425e-10
+              },
+              {
+                "offset": -3,
+                "feature": "id_bit_10",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -3,
+                "feature": "id_bit_9",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -3,
+                "feature": "id_bit_8",
+                "value": 1.0,
+                "reference": 1.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -3,
+                "feature": "id_bit_7",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -3,
+                "feature": "id_bit_6",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -3,
+                "feature": "id_bit_5",
+                "value": 1.0,
+                "reference": 1.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -3,
+                "feature": "id_bit_4",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -3,
+                "feature": "id_bit_3",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -3,
+                "feature": "id_bit_2",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -3,
+                "feature": "id_bit_1",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -3,
+                "feature": "id_bit_0",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -3,
+                "feature": "byte_4",
+                "value": 0.047058823529411764,
+                "reference": 0.047058823529411764,
+                "delta": 0.0
+              },
+              {
+                "offset": -3,
+                "feature": "byte_5",
+                "value": 0.13333333333333333,
+                "reference": 0.13333333333333333,
+                "delta": 0.0
+              },
+              {
+                "offset": -3,
+                "feature": "byte_6",
+                "value": 0.2196078431372549,
+                "reference": 0.2196078431372549,
+                "delta": 0.0
+              },
+              {
+                "offset": -3,
+                "feature": "byte_7",
+                "value": 0.3058823529411765,
+                "reference": 0.3058823529411765,
+                "delta": 0.0
+              },
+              {
+                "offset": -3,
+                "feature": "dlc",
+                "value": 1.0,
+                "reference": 1.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -2,
+                "feature": "id_bit_10",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -2,
+                "feature": "id_bit_9",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -2,
+                "feature": "id_bit_8",
+                "value": 1.0,
+                "reference": 1.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -2,
+                "feature": "id_bit_7",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -2,
+                "feature": "id_bit_6",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -2,
+                "feature": "id_bit_5",
+                "value": 1.0,
+                "reference": 1.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -2,
+                "feature": "id_bit_4",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -2,
+                "feature": "id_bit_3",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -2,
+                "feature": "id_bit_2",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -2,
+                "feature": "id_bit_1",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -2,
+                "feature": "id_bit_0",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -2,
+                "feature": "byte_4",
+                "value": 0.047058823529411764,
+                "reference": 0.047058823529411764,
+                "delta": 0.0
+              },
+              {
+                "offset": -2,
+                "feature": "byte_5",
+                "value": 0.13333333333333333,
+                "reference": 0.13333333333333333,
+                "delta": 0.0
+              },
+              {
+                "offset": -2,
+                "feature": "byte_6",
+                "value": 0.2196078431372549,
+                "reference": 0.2196078431372549,
+                "delta": 0.0
+              },
+              {
+                "offset": -2,
+                "feature": "byte_7",
+                "value": 0.3058823529411765,
+                "reference": 0.3058823529411765,
+                "delta": 0.0
+              },
+              {
+                "offset": -2,
+                "feature": "dlc",
+                "value": 1.0,
+                "reference": 1.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -1,
+                "feature": "id_bit_10",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -1,
+                "feature": "id_bit_9",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -1,
+                "feature": "id_bit_8",
+                "value": 1.0,
+                "reference": 1.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -1,
+                "feature": "id_bit_7",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -1,
+                "feature": "id_bit_6",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -1,
+                "feature": "id_bit_5",
+                "value": 1.0,
+                "reference": 1.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -1,
+                "feature": "id_bit_4",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -1,
+                "feature": "id_bit_3",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -1,
+                "feature": "id_bit_2",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -1,
+                "feature": "id_bit_1",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -1,
+                "feature": "id_bit_0",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": -1,
+                "feature": "byte_4",
+                "value": 0.047058823529411764,
+                "reference": 0.047058823529411764,
+                "delta": 0.0
+              },
+              {
+                "offset": -1,
+                "feature": "byte_5",
+                "value": 0.13333333333333333,
+                "reference": 0.13333333333333333,
+                "delta": 0.0
+              },
+              {
+                "offset": -1,
+                "feature": "byte_6",
+                "value": 0.2196078431372549,
+                "reference": 0.2196078431372549,
+                "delta": 0.0
+              },
+              {
+                "offset": -1,
+                "feature": "byte_7",
+                "value": 0.3058823529411765,
+                "reference": 0.3058823529411765,
+                "delta": 0.0
+              },
+              {
+                "offset": -1,
+                "feature": "dlc",
+                "value": 1.0,
+                "reference": 1.0,
+                "delta": 0.0
+              },
+              {
+                "offset": 0,
+                "feature": "id_bit_10",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": 0,
+                "feature": "id_bit_9",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": 0,
+                "feature": "id_bit_8",
+                "value": 1.0,
+                "reference": 1.0,
+                "delta": 0.0
+              },
+              {
+                "offset": 0,
+                "feature": "id_bit_7",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": 0,
+                "feature": "id_bit_6",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": 0,
+                "feature": "id_bit_5",
+                "value": 1.0,
+                "reference": 1.0,
+                "delta": 0.0
+              },
+              {
+                "offset": 0,
+                "feature": "id_bit_4",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": 0,
+                "feature": "id_bit_3",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": 0,
+                "feature": "id_bit_2",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": 0,
+                "feature": "id_bit_1",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": 0,
+                "feature": "id_bit_0",
+                "value": 0.0,
+                "reference": 0.0,
+                "delta": 0.0
+              },
+              {
+                "offset": 0,
+                "feature": "dlc",
+                "value": 1.0,
+                "reference": 1.0,
+                "delta": 0.0
+              }
+            ],
+            "matrix": [
+              [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.00035347968353294235,
+                0.0003534796835328313,
+                0.002508457099105854,
+                0.008375773100359418,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                7.03950565579814e-05,
+                3.785341644191309e-06
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.00045357286321251467,
+                0.00045427304576317606,
+                0.002672286765385723,
+                0.0026647909158799554,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.7680592203639378e-06,
+                3.4307112706244425e-10
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.00043270195771932807,
+                0.00043409190672233366,
+                0.002676455522906851,
+                0.0026688538833784525,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                7.701799147219468e-06,
+                8.366623949207508e-08
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.042609529187564305,
+                0.00737813898818962,
+                0.12036925761598455,
+                0.0033558346799257843,
+                0.01956336783184731,
+                0.052079827754777874,
+                0.0044583818096680106,
+                0.01229833253463064,
+                0.0,
+                1.9116769578220172e-05,
+                8.293793707370156e-09
+              ]
+            ]
+          }
+        },
+        "sha256": "7e6e66f56ea2ca0bb30b21b6c02f456c0a2e0a7c92bc1122c03c46a4722640f4"
+      }
+    ],
+    "integrity_scope": "detects changes against a trusted retained digest; does not authenticate acquisition, origin, time or custody"
+  },
+  "case_sha256": "ed6786c61f959468875d7fc85f586a57ff44ef7299e41289f6c0ca0a90ade677"
+}

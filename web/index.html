@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Interpretable CAN intrusion forensics research workspace"
+    />
+    <title>CAN Trace · Forensic workspace</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script defer src="/static/app.js"></script>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="CAN Trace home"
+        ><span class="brandmark">C<span>↗</span></span
+        ><span
+          >CAN<span class="brandlight">TRACE</span
+          ><small>VEHICLE SECURITY LAB</small></span
+        ></a
+      >
+      <div class="side-label">WORKSPACE</div>
+      <nav aria-label="Workspace">
+        <button class="nav active" data-view="overview">
+          <span>◈</span> Live forensics <b>01</b></button
+        ><button class="nav" data-view="evaluation">
+          <span>▥</span> Evaluation</button
+        ><button class="nav" data-view="model">
+          <span>⌘</span> Tensor model</button
+        ><button class="nav" data-view="research">
+          <span>▤</span> Research & scope
+        </button>
+      </nav>
+      <div class="side-note">
+        <span class="dot"></span> LOCAL ANALYSIS
+        <div>Passive by design.<br />Evidence you can inspect.</div>
+      </div>
+      <div class="sidebar-foot">
+        <span class="version">RESEARCH PROTOTYPE</span>
+        <p>CAN-MIRGU · 11-bit CAN<br />Conditional MPS · v0.1.0</p>
+      </div>
+    </aside>
+    <main>
+      <header class="topbar">
+        <div>
+          <span class="crumb">Workspace</span><span class="slash">/</span
+          ><span id="breadcrumb">Live forensics</span>
+        </div>
+        <div class="topright">
+          <span class="local">● Local session</span
+          ><a href="/openapi.json" target="_blank" rel="noreferrer"
+            >API schema ↗</a
+          >
+        </div>
+      </header>
+      <section class="page-heading">
+        <div>
+          <div class="eyebrow">INTERPRETABLE INTRUSION ANALYSIS</div>
+          <h1 id="title">From anomaly to evidence.</h1>
+          <p id="subtitle">
+            Inspect the signal. Trace the decision. Preserve the evidence.
+          </p>
+        </div>
+        <span class="mode"><span class="dot"></span> SOFTWARE REPLAY</span>
+      </section>
+      <div id="setup" class="notice hidden"></div>
+      <section id="overview" class="view">
+        <div class="sourcebar">
+          <span class="sourceicon">▣</span>
+          <div>
+            <strong>CAN-MIRGU / physical injection</strong
+            ><small
+              >Selected attack-centred excerpt · real vehicle capture · labels
+              revealed for review</small
+            >
+          </div>
+          <span class="sourcebadge">PUBLIC RESEARCH DATA</span>
+        </div>
+        <div class="stats">
+          <article>
+            <label>WINDOWS REPLAYED</label
+            ><strong id="windowCount">0 <small>/ 300</small></strong
+            ><span>4 same-ID messages per window</span>
+          </article>
+          <article>
+            <label>ALERT WINDOWS</label><strong id="alertCount">0</strong
+            ><span>Above benign-calibrated threshold</span>
+          </article>
+          <article>
+            <label>MPS SCORE / P95</label><strong id="latency">—</strong
+            ><span>CPU scoring only · measured</span>
+          </article>
+          <article>
+            <label>MAXIMUM BOND</label
+            ><strong id="bondSpec">4 <small>· ID-conditioned</small></strong
+            ><span id="parameters">Loading model specification</span>
+          </article>
+        </div>
+        <div class="workspace-grid">
+          <div class="left-column">
+            <article class="panel timeline">
+              <div class="panel-title">
+                <div>
+                  <h2>Anomaly timeline</h2>
+                  <p>
+                    Higher score means lower similarity to learned normal
+                    traffic
+                  </p>
+                </div>
+                <span id="streamStatus" class="status">READY</span>
+              </div>
+              <div class="chartbox">
+                <canvas
+                  id="timeline"
+                  aria-label="MPS normalized anomaly score timeline with threshold"
+                  role="img"
+                ></canvas>
+              </div>
+              <div class="chartlegend">
+                <span><i class="teal"></i> MPS normalized anomaly score</span
+                ><span
+                  ><i class="orange"></i> Alert threshold
+                  <b id="threshold">—</b></span
+                ><span class="push">Window index →</span>
+              </div>
+              <div class="controls">
+                <button id="play" class="primary">▶ Start replay</button
+                ><button id="reset" class="secondary">↺ Reset</button
+                ><label for="speed">Playback</label
+                ><select id="speed">
+                  <option value="8">8 windows / sec</option>
+                  <option value="20">20 windows / sec</option>
+                  <option value="50">50 windows / sec</option></select
+                ><span>Scores recomputed on arrival</span>
+              </div>
+            </article>
+            <article class="panel traffic">
+              <div class="panel-title">
+                <div>
+                  <h2>Message evidence</h2>
+                  <p>Select a window to inspect its supporting frames</p>
+                </div>
+                <span class="mini-badge" id="liveCount">0 windows</span>
+              </div>
+              <div class="table-scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>WINDOW</th>
+                      <th>CAN ID</th>
+                      <th>LAST PAYLOAD · HEX</th>
+                      <th>SCORE</th>
+                      <th>DECISION</th>
+                      <th>LABEL¹</th>
+                    </tr>
+                  </thead>
+                  <tbody id="trafficRows">
+                    <tr>
+                      <td colspan="6" class="empty">
+                        Start replay to receive and score captured CAN traffic.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-foot">
+                ¹ Dataset ground truth is for evaluation only. It is never an
+                input to the detector.
+              </div>
+            </article>
+          </div>
+          <article class="panel inspector">
+            <div class="panel-title">
+              <div>
+                <div class="eyebrow">DECISION EXPLORER</div>
+                <h2 id="caseTitle">Inspect a window</h2>
+              </div>
+              <span class="inspect-icon">⌕</span>
+            </div>
+            <div id="inspectorEmpty" class="inspector-empty">
+              <div>⌘</div>
+              <h3>Every alert needs a trail.</h3>
+              <p>
+                Replay the capture, then select a window to explore
+                message-level evidence and feature contributions.
+              </p>
+            </div>
+            <div id="caseContent" class="hidden">
+              <div class="case-score">
+                <div>
+                  <label>ANOMALY SCORE</label><strong id="caseScore">—</strong>
+                </div>
+                <span id="caseDecision" class="decision">—</span>
+              </div>
+              <div class="inspector-section">
+                <h3>What influenced this score?</h3>
+                <p>
+                  Signed median-replacement delta. Positive values raise the
+                  score relative to the training reference.
+                </p>
+                <div id="contributions"></div>
+              </div>
+              <div class="inspector-section">
+                <h3>Feature attribution across messages</h3>
+                <canvas
+                  id="heatmap"
+                  height="100"
+                  aria-label="Signed feature occlusion heatmap across four messages"
+                  role="img"
+                ></canvas>
+                <div class="heatlegend">
+                  <span>t−3 → t · ID bits / bytes / DLC / timing</span
+                  ><span>− <b>▰</b> +</span>
+                </div>
+              </div>
+              <div class="inspector-section">
+                <h3>Original frame evidence</h3>
+                <div id="frames"></div>
+              </div>
+              <div class="integrity">
+                <span>◇ CONTENT INTEGRITY</span><code id="caseHash">—</code>
+                <p>
+                  SHA-256 linked source, model and case.<br />Integrity hashes
+                  do not authenticate origin.
+                </p>
+              </div>
+              <a id="export" class="export" href="#"
+                >↓ Export forensic case · JSON</a
+              >
+              <p class="attribution-note">
+                Attribution describes model sensitivity, not causality.
+                Contributions are not additive.
+              </p>
+            </div>
+          </article>
+        </div>
+        <div class="footer-note">
+          <strong>Research context</strong> Selected excerpt for demonstration;
+          full-capture results are in Evaluation. Software playback is not
+          evidence of on-vehicle real-time performance.
+        </div>
+      </section>
+      <section id="evaluation" class="view hidden">
+        <article class="panel full-panel">
+          <div class="panel-title">
+            <div>
+              <h2>Performance, with the context intact.</h2>
+              <p>
+                Identical clean training subset · benign-only thresholds ·
+                exploratory sample evaluation
+              </p>
+            </div>
+            <span class="mini-badge">MEASURED RESULTS</span>
+          </div>
+          <div class="body-pad">
+            <p id="protocol"></p>
+            <div class="notice">
+              One vehicle, one physical attack and its derived masquerade. ID
+              conditioning was introduced after reviewing the global model
+              results. Final sample metrics are exploratory. High ranking
+              quality coexists with a substantial false-alert burden at the
+              default threshold.
+            </div>
+            <div id="evaluationTables"></div>
+            <p>
+              AP = average precision; compare it to attack prevalence. FP / 1k
+              counts false alerts per 1,000 normal windows. No labels were used
+              to select thresholds.
+            </p>
+            <h3>Reproducibility & latency</h3>
+            <p id="reproducibility"></p>
+            <p id="latencyDetail"></p>
+          </div>
+        </article>
+      </section>
+      <section id="model" class="view hidden">
+        <article class="panel full-panel">
+          <div class="panel-title">
+            <div>
+              <h2>A tensor network you can inspect.</h2>
+              <p>Compressed kernel mean embeddings · classical CPU execution</p>
+            </div>
+            <span class="mini-badge">MATRIX PRODUCT STATES</span>
+          </div>
+          <div class="body-pad">
+            <div
+              class="tensor-diagram"
+              aria-label="Chain of tensor network sites"
+            >
+              <span>x₁<br />●</span>─<span>x₂<br />●</span>─<span
+                >x₃<br />●</span
+              >─<span>…<br />●</span>─<span>x₈₈<br />●</span>
+            </div>
+            <h3>From CAN traffic to similarity</h3>
+            <p>
+              Four successive messages of the same ID form 88 sites: 11
+              identifier bits, 8 payload bytes, DLC, bus gap and same-ID gap per
+              message. Each site maps to [cos(0.9x), sin(0.9x)]. Each
+              arbitration ID has its own normal-only sum of product states,
+              compressed through QR/SVD sweeps to a maximum bond dimension of 4.
+            </p>
+            <p>
+              The raw score is −log of the absolute overlap with the matching ID
+              prototype, clipped to [10⁻¹⁵, 1]. It is divided by that ID’s
+              99th-percentile benign-calibration score; a ratio above 1 alerts.
+              Unknown IDs receive an explicit novelty score of 2. This is a
+              similarity score, not an attack probability or a normalized Born
+              likelihood.
+            </p>
+            <h3>Bond entropy diagnostic</h3>
+            <p>
+              Schmidt entropies of the first ID prototype, in bits. These
+              summarize dependencies retained by the representation; they do not
+              establish physical CAN signal causality.
+            </p>
+            <canvas
+              id="bonds"
+              height="180"
+              role="img"
+              aria-label="Bond entropy along the MPS chain"
+            ></canvas>
+            <p id="modelDetails"></p>
+            <h3>Known boundaries</h3>
+            <p>
+              Short context can miss stealthy replay and long-range dynamics.
+              Byte padding and cold-start zero gaps are explicit representation
+              choices. The detector supports classical 11-bit CAN, one channel
+              at a time. No DBC semantics, ECU identity, CAN FD or safety
+              certification is inferred.
+            </p>
+          </div>
+        </article>
+      </section>
+      <section id="research" class="view hidden">
+        <article class="panel full-panel">
+          <div class="panel-title">
+            <div>
+              <h2>Built on evidence. Clear about scope.</h2>
+              <p>Selected primary references and project boundaries</p>
+            </div>
+          </div>
+          <div class="body-pad research-grid">
+            <div>
+              <h3>Tensor networks & explainability</h3>
+              <a
+                href="https://arxiv.org/abs/2401.00867"
+                target="_blank"
+                rel="noreferrer"
+                >Aizpurua et al. · Tensor Networks for Explainable ML in
+                Cybersecurity ↗</a
+              ><a
+                href="https://arxiv.org/abs/2505.03911"
+                target="_blank"
+                rel="noreferrer"
+                >Hohenfeld et al. · Explaining Anomalies with Tensor Networks
+                ↗</a
+              >
+              <h3>Automotive data & evaluation</h3>
+              <a
+                href="https://github.com/sampathrajapaksha/CAN-MIRGU"
+                target="_blank"
+                rel="noreferrer"
+                >CAN-MIRGU · Authors’ dataset and attack definitions ↗</a
+              ><a
+                href="https://zenodo.org/records/10462796"
+                target="_blank"
+                rel="noreferrer"
+                >ROAD · Real ORNL Automotive Dynamometer dataset ↗</a
+              ><a
+                href="https://github.com/etas/SynCAN"
+                target="_blank"
+                rel="noreferrer"
+                >CANet / SynCAN · Signal-level anomaly detection ↗</a
+              ><a
+                href="https://github.com/lorenzo9uerra/CAN-IDSs-on-the-ROAD"
+                target="_blank"
+                rel="noreferrer"
+                >CAN IDSs on the ROAD · Comparative evaluation ↗</a
+              >
+            </div>
+            <div>
+              <h3>What this prototype demonstrates</h3>
+              <p>
+                Normal-only learning, actual MPS compression, sequence scoring,
+                feature sensitivity, baseline evaluation, replay and
+                content-addressed evidence exports.
+              </p>
+              <h3>What remains open</h3>
+              <p>
+                Cross-vehicle tests, unseen attack families, long-context
+                replay, robust event-level thresholds, DBC-aware explanations,
+                ECU deployment and acquisition authentication.
+              </p>
+              <h3>Forensic relevance</h3>
+              <p>
+                Source/model hashes and reproducible configuration support
+                technical traceability. This project does not claim compliance
+                with UNECE R155 or ISO/SAE 21434.
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+      <footer>
+        CAN TRACE
+        <span>Interpretable automotive security · Research prototype</span
+        ><span>DATA: CAN-MIRGU AUTHORS · CITED IN REPOSITORY</span>
+      </footer>
+    </main>
+  </body>
+</html>
